@@ -1,0 +1,7 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:Template name="GameplayMenuVisualTree" src="project://database/Assets/UI%20Toolkit/GameplayMenuVisualTree.uxml?fileID=9197481963319205126&amp;guid=215f8efdd6c3cde4d8ccb1af57a9f3f0&amp;type=3#GameplayMenuVisualTree" />
+    <engine:Template name="PauseMenuVisualTree" src="project://database/Assets/UI%20Toolkit/PauseMenuVisualTree.uxml?fileID=9197481963319205126&amp;guid=f4b0b1f82d4f66a409ce77def22bce41&amp;type=3#PauseMenuVisualTree" />
+    <Style src="project://database/Assets/UI%20Toolkit/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=b4d627e65293574479c330b9adcaab4d&amp;type=3#MainMenuStyle" />
+    <engine:Instance template="GameplayMenuVisualTree" name="GameplayMenuVisualTree" style="flex-grow: 1; display: none;" />
+    <engine:Instance template="PauseMenuVisualTree" name="PauseMenuVisualTree" style="flex-grow: 1; display: none;" />
+</engine:UXML>

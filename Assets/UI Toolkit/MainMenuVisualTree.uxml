@@ -1,0 +1,16 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=b4d627e65293574479c330b9adcaab4d&amp;type=3#MainMenuStyle" />
+    <engine:VisualElement name="Container" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UI%20Toolkit/house.jpg?fileID=2800000&amp;guid=f65e6c40474b04242ad17825587db17b&amp;type=3#house&quot;); -unity-background-image-tint-color: rgb(128, 128, 128);">
+        <engine:Label text="Vagrancy" name="Header" class="header" style="-unity-text-align: upper-left; text-shadow: 5px 5px 0 rgba(0, 0, 0, 0.98);" />
+        <engine:VisualElement name="RootMenu" enabled="true" style="flex-grow: 1; display: flex;">
+            <engine:Button text="Start" name="StartGameButton" class="button" style="align-self: center;" />
+            <engine:Button text="Settings" name="SettingsButton" class="button" />
+            <engine:Button text="Quit" name="QuitButton" class="button" />
+        </engine:VisualElement>
+        <engine:VisualElement name="SettingsMenu" style="flex-grow: 1; display: none;">
+            <engine:Label text="Settings" name="SettingsHeader" class="header2" />
+            <engine:Label text="Placeholder Settings Text" name="SettingsText" class="body" />
+            <engine:Button text="Back" name="SettingsBackButton" class="button" />
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>

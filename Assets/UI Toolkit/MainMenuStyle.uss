@@ -1,0 +1,40 @@
+.header {
+    font-size: 100px;
+    color: rgb(255, 255, 255);
+    -unity-text-align: upper-left;
+    align-self: center;
+}
+
+.button {
+    background-color: rgb(59, 80, 111);
+    font-size: 28px;
+    width: 220px;
+    height: 60px;
+    align-self: center;
+    margin-top: 50px;
+    transition-duration: 0.35s;
+}
+
+.button:hover {
+    scale: 1.1 1.1;
+    -unity-background-image-tint-color: rgb(96, 144, 115);
+}
+
+.header {
+    font-size: 100px;
+    color: rgb(255, 255, 255);
+    -unity-text-align: upper-left;
+    align-self: center;
+}
+
+.header2 {
+    font-size: 60px;
+    color: rgb(255, 255, 255);
+    align-self: center;
+}
+
+.body {
+    font-size: 36px;
+    color: rgb(255, 255, 255);
+    align-self: center;
+}
