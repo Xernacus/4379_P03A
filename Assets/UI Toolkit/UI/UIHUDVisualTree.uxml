@@ -1,8 +1,8 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:Template name="PlayerHUDVisualTree 1" src="project://database/Assets/UI%20Toolkit/UI/PlayerHUDVisualTree%201.uxml?fileID=9197481963319205126&amp;guid=e037af20efae0bc4988f28dd1a3cec80&amp;type=3#PlayerHUDVisualTree 1" />
     <engine:Template name="WinMenuVisualTree" src="project://database/Assets/UI%20Toolkit/UI/WinMenuVisualTree.uxml?fileID=9197481963319205126&amp;guid=fa78bdefdd8a8c5479254108972c2272&amp;type=3#WinMenuVisualTree" />
     <engine:Template name="LoseMenuVisualTree" src="project://database/Assets/UI%20Toolkit/UI/LoseMenuVisualTree.uxml?fileID=9197481963319205126&amp;guid=3bf7dd27dd56a1849b4895a1c4ac8951&amp;type=3#LoseMenuVisualTree" />
-    <engine:Template name="PlayerHUDVisualTree 1" src="project://database/Assets/UI%20Toolkit/UI/PlayerHUDVisualTree%201.uxml?fileID=9197481963319205126&amp;guid=e037af20efae0bc4988f28dd1a3cec80&amp;type=3#PlayerHUDVisualTree 1" />
+    <engine:Instance template="PlayerHUDVisualTree 1" name="PlayerHUDVisualTree" style="flex-grow: 1;" />
     <engine:Instance template="WinMenuVisualTree" name="WinMenuVisualTree" style="flex-grow: 1;" />
     <engine:Instance template="LoseMenuVisualTree" name="LoseMenuVisualTree" style="flex-grow: 1;" />
-    <engine:Instance template="PlayerHUDVisualTree 1" name="PlayerHUDVisualTree" />
 </engine:UXML>

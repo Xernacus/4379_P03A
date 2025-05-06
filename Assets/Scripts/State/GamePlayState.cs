@@ -5,6 +5,9 @@ public class GamePlayState : State
     private GameFSM _stateMachine;
     private GameController _controller;
 
+    private float _enemySpawnTime = 15;
+    private float _enemySpawnTimeIncrement = 15;
+
     public GamePlayState(GameFSM stateMachine, GameController controller)
     {
         _stateMachine = stateMachine;
@@ -31,5 +34,15 @@ public class GamePlayState : State
     public override void Tick()
     {
         base.Tick();
+        if (_controller.ElapsedTime >= _enemySpawnTime)
+        {
+            _enemySpawnTime += _enemySpawnTimeIncrement;
+        }
+    }
+
+    private void SpawnEnemy()
+    {
+        UnitSpawner spawner = _controller.EnemySpawners[Random.Range(0, _controller.EnemySpawners.Length)];
+        spawner.Spawn(_controller.EnemyUnitPrefab, spawner.gameObject.transform);
     }
 }

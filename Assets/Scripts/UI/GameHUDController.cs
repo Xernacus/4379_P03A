@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using System;
 
 public class GameHUDController : MonoBehaviour
 {
@@ -35,6 +36,9 @@ public class GameHUDController : MonoBehaviour
     private Vector2 _joystickCenterPos;
     private Vector2 _joystickInput = Vector2.zero;
 
+    public event Action OnInteract;
+    public event Action OnAttack;
+
     public Vector2 JoystickInput
     {
         get => _joystickInput;
@@ -45,6 +49,7 @@ public class GameHUDController : MonoBehaviour
     void Awake()
     {
         _document = GetComponent<UIDocument>();
+        
         _loseMenu = _document.rootVisualElement.Q("LoseMenuVisualTree");
         _retryButton = _loseMenu.Q("RetryButton") as Button;
 
@@ -53,15 +58,15 @@ public class GameHUDController : MonoBehaviour
         
         _playerHUDVisualTree = _document.rootVisualElement.Q("PlayerHUDVisualTree");
         _expBarFill = _playerHUDVisualTree.Q("ProgressBarFill");
-        Debug.Log(_expBarFill);
+        //Debug.Log(_expBarFill);
         _healthBarFill = _playerHUDVisualTree.Q("HealthProgressBarFill");
-        Debug.Log(_healthBarFill);
+        //Debug.Log(_healthBarFill);
         
 
         _elapsedTimeLabel = _document.rootVisualElement.Q("ElapsedTimeLabel") as Label;
 
         _audioSource = GetComponent<AudioSource>();
-        _root = GetComponent<UIDocument>().rootVisualElement;
+        _root = _document.rootVisualElement.Q("PlayerHUDVisualTree");
         _joystickBG = _root.Q("Joystick");
         _joystickCenter = _root.Q("JoystickCenter");
 
@@ -71,11 +76,12 @@ public class GameHUDController : MonoBehaviour
         Debug.Log(_attackButton);
         _interactButton = _root.Q("InteractButton") as Button;
 
+        /**
         foreach (Button button in _buttons)
         {
             button.RegisterCallback<ClickEvent>(OnAnyButtonClick);
         }
-
+        **/
         _attackButton.RegisterCallback<ClickEvent>(OnAttackClick);
         _interactButton.RegisterCallback<ClickEvent>(OnInteractClick);
 
@@ -192,7 +198,6 @@ public class GameHUDController : MonoBehaviour
         {
             _joystickInput = new Vector2(Mathf.Clamp(evt.position.x - _joystickCenterPos.x, -50, 50), Mathf.Clamp(evt.position.y - _joystickCenterPos.y, -50, 50));
             _joystickInput = Vector2.ClampMagnitude(_joystickInput, 50);
-            Debug.Log(_joystickInput);
             _joystickCenter.style.translate = new StyleTranslate(new Translate(new Length(_joystickInput.x, LengthUnit.Pixel), new Length(_joystickInput.y, LengthUnit.Pixel)));
         }
     }
@@ -213,11 +218,13 @@ public class GameHUDController : MonoBehaviour
     private void OnAttackClick(ClickEvent evt)
     {
         Debug.Log("Attack");
+        OnAttack?.Invoke();
     }
 
     private void OnInteractClick(ClickEvent evt)
     {
         Debug.Log("Interact");
+        OnInteract?.Invoke();
     }
 
 }

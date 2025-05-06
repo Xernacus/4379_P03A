@@ -13,13 +13,17 @@ public class GameController : MonoBehaviour
     [field: SerializeField]
     public UnitSpawner UnitSpawner { get; private set; }
     [field: SerializeField]
+    public Unit EnemyUnitPrefab { get; private set; }
+    [field: SerializeField]
+    public UnitSpawner[] EnemySpawners { get; private set; }
+    [field: SerializeField]
     public GameHUDController GameHUDController { get; private set; }
     [field: SerializeField]
     public CinemachineCamera Camera { get; private set; }
     [field: SerializeField]
     public GameFSM FSM { get; private set; }
 
-    [SerializeField] private float _timeToWin = 30;
+    [SerializeField] private float _timeToWin = 300;
     public float ElapsedTime { get; private set; }
     public bool HasWon { get; private set; }
 
@@ -41,6 +45,7 @@ public class GameController : MonoBehaviour
         {
             EnterWinState();
         }
+        
     }
 
     public void EnterWinState()
