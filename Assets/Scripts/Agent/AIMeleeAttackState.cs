@@ -96,7 +96,7 @@ public class AIMeleeAttackState : AIState
         _enemy.PlayAttackAnim();
 
         _agent.destination = _target.transform.position;
-        _agent.speed = _speed*50f;
+        _agent.speed = _speed*30f;
 
         for (int i = 0; i < 10; i++)
         {

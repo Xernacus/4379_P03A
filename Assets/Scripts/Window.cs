@@ -10,6 +10,17 @@ public class Window : MonoBehaviour, IInteractable
     [SerializeField]
     private GameObject _barricadePoint;
 
+    public GameObject VaultPoint;
+    public GameObject OutsidePoint;
+
+    private int _barricadeHealth;
+
+    public bool Barricaded
+    {
+        get => _barricaded;
+        set => _barricaded = value;
+    }
+
     public void Interact(PlayerController player)
     {
         if (player.HasBarricade)
@@ -17,6 +28,17 @@ public class Window : MonoBehaviour, IInteractable
             _barricade = Instantiate(_barricadePrefab, _barricadePoint.transform.position, gameObject.transform.rotation);
             player.HasBarricade = false;
             _barricaded = true;
+            _barricadeHealth = 4;
+        }
+    }
+
+    public void Damage()
+    {
+        _barricadeHealth--;
+        Debug.Log(_barricadeHealth);
+        if (_barricadeHealth < 0)
+        {
+            BreakBarricade();
         }
     }
 

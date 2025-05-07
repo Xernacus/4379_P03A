@@ -61,6 +61,8 @@ public class PlayerController : MonoBehaviour
         _uiControls.OnInteract += Interact;
 
         _animator = gameObject.GetComponentInChildren<Animator>();
+
+        _uiControls.SubscribeHealthEvents(_health);
     }
 
     // Update is called once per frame
@@ -82,6 +84,7 @@ public class PlayerController : MonoBehaviour
     {
         _uiControls.OnAttack -= Attack;
         _uiControls.OnInteract -= Interact;
+        _health.OnDeath -= _gameController.EnterLoseState;
     }
 
     private void Attack()
@@ -113,5 +116,10 @@ public class PlayerController : MonoBehaviour
             }
             
         }
+    }
+
+    public void SubscribeToHealthEvent()
+    {
+        _health.OnDeath += _gameController.EnterLoseState;
     }
 }

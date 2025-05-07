@@ -38,3 +38,12 @@
     color: rgb(255, 255, 255);
     align-self: center;
 }
+
+.button:active {
+    scale: 1.1 1.1;
+    -unity-background-image-tint-color: rgb(96, 144, 115);
+}
+
+.animMenu {
+    transition-duration: 0.5s;
+}

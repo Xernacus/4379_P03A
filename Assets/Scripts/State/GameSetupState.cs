@@ -4,7 +4,7 @@ public class GameSetupState : State
 {
     private GameFSM _stateMachine;
     private GameController _controller;
-
+    private PlayerController _player;
     public GameSetupState(GameFSM stateMachine, GameController controller)
     {
         _stateMachine = stateMachine;
@@ -16,13 +16,15 @@ public class GameSetupState : State
         base.Enter();
 
         Debug.Log("State: Game Setup");
-        PlayerController _player = _controller.UnitSpawner.Spawn(_controller.PlayerUnitPrefab, _controller.PlayerUnitSpawnLocation).GetComponent<PlayerController>();
+        _player = _controller.UnitSpawner.Spawn(_controller.PlayerUnitPrefab, _controller.PlayerUnitSpawnLocation).GetComponent<PlayerController>();
         _player.GameController = _controller;
+        SaveManager.Instance.Load();
     }
 
     public override void Exit()
     {
         base.Exit();
+        _player.SubscribeToHealthEvent();
     }
 
     public override void FixedTick()

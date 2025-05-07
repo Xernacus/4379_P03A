@@ -1,6 +1,6 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <engine:VisualElement style="flex-grow: 1; background-color: rgba(255, 0, 0, 0.39);">
-        <engine:Label text="Game Over" name="GameOverLabel" style="align-self: center; padding-top: 600px; font-size: 124px; text-shadow: 8px 8px 6px rgba(0, 0, 0, 0.83); background-color: rgba(0, 0, 0, 0); color: rgb(200, 200, 200);" />
+        <engine:Label text="Game Over" name="GameOverLabel" style="align-self: center; padding-top: 200px; font-size: 124px; text-shadow: 8px 8px 6px rgba(0, 0, 0, 0.83); background-color: rgba(0, 0, 0, 0); color: rgb(200, 200, 200);" />
         <engine:Button text="Retry?" name="RetryButton" style="font-size: 72px; text-shadow: 5px 5px 4px rgba(0, 0, 0, 0.9); background-color: rgb(255, 59, 59); border-top-width: 5px; border-right-width: 5px; border-bottom-width: 5px; border-left-width: 5px; border-left-color: rgb(171, 165, 30); border-right-color: rgb(171, 165, 30); border-top-color: rgb(171, 165, 30); border-bottom-color: rgb(171, 165, 30); margin-top: 100px; margin-right: 150px; margin-bottom: 100px; margin-left: 150px; color: rgb(209, 209, 209);" />
     </engine:VisualElement>
 </engine:UXML>

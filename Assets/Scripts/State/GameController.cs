@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using Unity.Cinemachine;
+using System;
 
 public class GameController : MonoBehaviour
 {
@@ -27,8 +28,8 @@ public class GameController : MonoBehaviour
     public float ElapsedTime { get; private set; }
     public bool HasWon { get; private set; }
 
-    public UnityEvent OnWin;
-    public UnityEvent OnLose;
+    public event Action OnWin = delegate { };
+    public event Action OnLose = delegate { };
 
     private void Start()
     {

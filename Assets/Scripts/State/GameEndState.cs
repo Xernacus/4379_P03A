@@ -14,8 +14,14 @@ public class GameEndState : State
     public override void Enter()
     {
         base.Enter();
-
+        Enemy[] enemies = GameObject.FindObjectsByType<Enemy>(FindObjectsSortMode.None);
+        foreach (Enemy enemy in enemies)
+        {
+            GameObject.Destroy(enemy.gameObject);
+        }
         Debug.Log("State: Game End");
+
+        SaveManager.Instance.Save();
     }
 
     public override void Exit()

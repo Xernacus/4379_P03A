@@ -8,7 +8,7 @@ public class GameHUDController : MonoBehaviour
 {
     [SerializeField] private GameController _gameController;
     //[SerializeField] private PlayerCharacter _playerCharacter;
-    //[SerializeField] private Health _health;
+    [SerializeField] private Health _health;
 
     private UIDocument _document;
     private VisualElement _loseMenu;
@@ -101,14 +101,16 @@ public class GameHUDController : MonoBehaviour
         
         _loseMenu.RegisterCallback<ClickEvent>(OnRetryButtonClick);
         _winMenu.RegisterCallback<ClickEvent>(OnRetryButtonClick);
+
+        _gameController.OnLose += DisplayLoseMenu;
+        _gameController.OnWin += DisplayWinMenu;
+    }
+
+    public void SubscribeHealthEvents(Health health)
+    {
+        _health = health;
+        _health.OnHealthChanged += SetHealthBarPercent;
         
-
-        _gameController.OnLose.AddListener(DisplayLoseMenu);
-
-        _gameController.OnWin.AddListener(DisplayWinMenu);
-
-        //_playerCharacter.OnEXPGained += SetEXPBarPercent;
-        //_health.OnHealthChanged += SetHealthBarPercent;
     }
 
     private void OnDisable()
@@ -116,14 +118,9 @@ public class GameHUDController : MonoBehaviour
         
         _loseMenu.UnregisterCallback<ClickEvent>(OnRetryButtonClick);
         _winMenu.UnregisterCallback<ClickEvent>(OnRetryButtonClick);
-        
 
-        _gameController.OnLose.RemoveListener(DisplayLoseMenu);
-        
-        _gameController.OnWin.RemoveListener(DisplayWinMenu);
-
-        //_playerCharacter.OnEXPGained -= SetEXPBarPercent;
-        //_health.OnHealthChanged -= SetHealthBarPercent;
+        _health.OnHealthChanged -= SetHealthBarPercent;
+        _health.OnDeath -= DisplayLoseMenu;
 
         _attackButton.UnregisterCallback<ClickEvent>(OnAttackClick);
         _interactButton.UnregisterCallback<ClickEvent>(OnInteractClick);
@@ -132,13 +129,15 @@ public class GameHUDController : MonoBehaviour
         _root.UnregisterCallback<PointerUpEvent>(OnJoystickRelease);
         _root.UnregisterCallback<PointerMoveEvent>(OnJoystickHold);
         _root.UnregisterCallback<PointerLeaveEvent>(OnScreenLeave);
+
+        _gameController.OnLose -= DisplayLoseMenu;
+        _gameController.OnWin -= DisplayWinMenu;
     }
 
     private void DisableAllDisplays()
     {
         _loseMenu.style.display = DisplayStyle.None;
         _winMenu.style.display = DisplayStyle.None;
-
     }
 
     private void DisplayLoseMenu()
@@ -160,16 +159,10 @@ public class GameHUDController : MonoBehaviour
         _gameController.ReloadLevel();
     }
 
-    private void SetEXPBarPercent(float currentEXP, float expForLevelUp)
-    {
-        float percentage = ((1 / expForLevelUp) * currentEXP) * 100;
-        _expBarFill.style.width = Length.Percent(percentage);
-    }
-
     private void SetHealthBarPercent(float currentEXP, float expForLevelUp)
     {
         float percentage = ((1 / expForLevelUp) * currentEXP) * 100;
-        _healthBarFill.style.width = Length.Percent(percentage);
+        _healthBarFill.style.height = Length.Percent(percentage);
     }
 
     private void Update()
@@ -178,6 +171,7 @@ public class GameHUDController : MonoBehaviour
         int minutes = Mathf.FloorToInt(elapsedTime / 60) % 60;
         int seconds = Mathf.FloorToInt(elapsedTime % 60);
         string textElapsedTime = string.Format("{0:0}:{1:00}", minutes, seconds);
+        _elapsedTimeLabel.text = textElapsedTime;
     }
 
     private void OnJoystickClick(PointerDownEvent evt)

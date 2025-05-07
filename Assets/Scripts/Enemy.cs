@@ -27,10 +27,6 @@ public class Enemy : MonoBehaviour, IDamageable
         {
             other.gameObject.GetComponent<Health>().TakeDamage(1);
         }
-        else if (other.gameObject.layer == LayerMask.NameToLayer("Window"))
-        {
-
-        }
     }
 
     private void Update()
@@ -48,8 +44,6 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public void Damage(PlayerController player)
     {
-        Debug.Log(gameObject.transform.position);
-        Debug.Log(gameObject.transform.position + (gameObject.transform.position - player.gameObject.transform.position).normalized * 10f);
         _agent.ChangeState(AIStateID.EnemyStunned);
         Vector3 temp = (gameObject.transform.position + (gameObject.transform.position - player.gameObject.transform.position).normalized * 10f);
         _navAgent.destination = new Vector3(temp.x, gameObject.transform.position.y, temp.z);

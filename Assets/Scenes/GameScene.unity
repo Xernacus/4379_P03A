@@ -133,7 +133,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7300524898880240232, guid: 4c1de8ddd635f454dafeafac293cc321, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.688
+      value: -5.627
       objectReference: {fileID: 0}
     - target: {fileID: 7300524898880240232, guid: 4c1de8ddd635f454dafeafac293cc321, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1566,7 +1566,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: BarricadePickup (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3423178052878026276, guid: afd58142db5ad704d966192b56b5027b, type: 3}
+    - {fileID: 7696306804038119040, guid: afd58142db5ad704d966192b56b5027b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1793,6 +1795,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameController: {fileID: 1394473720}
+  _health: {fileID: 0}
 --- !u!1 &1178548675
 GameObject:
   m_ObjectHideFlags: 0
@@ -2561,14 +2564,8 @@ MonoBehaviour:
   - {fileID: 1225577923}
   <GameHUDController>k__BackingField: {fileID: 1157749326}
   <Camera>k__BackingField: {fileID: 762026040}
-  <FSM>k__BackingField: {fileID: 0}
+  <FSM>k__BackingField: {fileID: 1394473719}
   _timeToWin: 30
-  OnWin:
-    m_PersistentCalls:
-      m_Calls: []
-  OnLose:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1459539928
 GameObject:
   m_ObjectHideFlags: 0
@@ -3814,7 +3811,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7300524898880240232, guid: 4c1de8ddd635f454dafeafac293cc321, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.109
+      value: -0.029
       objectReference: {fileID: 0}
     - target: {fileID: 7300524898880240232, guid: 4c1de8ddd635f454dafeafac293cc321, type: 3}
       propertyPath: m_LocalRotation.w

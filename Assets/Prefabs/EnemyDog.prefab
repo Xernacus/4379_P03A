@@ -150,10 +150,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sfx: {fileID: 0}
-  _deathsfx: {fileID: 0}
+  _deathsfx: {fileID: 8300000, guid: 9557a0a7ca60a34448a492ade426fc0a, type: 3}
   _volumeSFX: 1
-  _currentHealth: 5
-  _maxHealth: 5
+  _currentHealth: 6
+  _maxHealth: 6
   OnKilled:
     m_PersistentCalls:
       m_Calls: []
@@ -170,7 +170,7 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -199,7 +199,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.6
+  m_Radius: 0.8
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}

@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using System.Threading.Tasks;
 
 public class MainMenuEvents : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class MainMenuEvents : MonoBehaviour
     private Button _settingsButton;
     private Button _settingsBackButton;
     private Button _quitButton;
+    private Button _resetButton;
+
+    private Label _label;
 
     private List<Button> _menuButtons = new List<Button>();
 
@@ -45,11 +49,19 @@ public class MainMenuEvents : MonoBehaviour
         _settingsBackButton = _document.rootVisualElement.Q("SettingsBackButton") as Button;
         _settingsBackButton.RegisterCallback<ClickEvent>(OnSettingsBackButtonClick);
 
+        _resetButton = _document.rootVisualElement.Q("StartGameButton") as Button;
+        _resetButton.RegisterCallback<ClickEvent>(OnPlayGameClick);
+
         _menuButtons = _document.rootVisualElement.Query<Button>().ToList();
         for (int i = 0; i < _menuButtons.Count; i++)
         {
             _menuButtons[i].RegisterCallback<ClickEvent>(OnAllButtonsClick);
         }
+
+        _label = _document.rootVisualElement.Q("ScoreLabel") as Label;
+        SaveManager.Instance.Load();
+        _label.text = "Enemies Killed: " + SaveManager.Instance.ActiveSaveData.Score.ToString();
+
     }
 
     private void OnDisable()
@@ -77,6 +89,11 @@ public class MainMenuEvents : MonoBehaviour
         Application.Quit();
     }
 
+    private void OnResetClick(ClickEvent evt)
+    {
+        SaveManager.Instance.ResetSave();
+    }
+
     private void OnAllButtonsClick(ClickEvent evt)
     {
         _audioSource.Play();
@@ -86,6 +103,8 @@ public class MainMenuEvents : MonoBehaviour
     {
         _rootMenu.style.display = DisplayStyle.None;
         _settingsMenu.style.display = DisplayStyle.Flex;
+        _rootMenu.style.scale = new StyleScale(new Vector2(0, 0));
+        _settingsMenu.style.scale = new StyleScale(new Vector2(1, 1));
     }
 
 
@@ -93,6 +112,8 @@ public class MainMenuEvents : MonoBehaviour
     {
         _rootMenu.style.display = DisplayStyle.Flex;
         _settingsMenu.style.display = DisplayStyle.None;
+        _rootMenu.style.scale = new StyleScale(new Vector2(1, 1));
+        _settingsMenu.style.scale = new StyleScale(new Vector2(0, 0));
     }
 
 }
