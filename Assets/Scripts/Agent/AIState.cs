@@ -6,7 +6,8 @@ using UnityEngine;
 public enum AIStateID { 
     EnemyWander,
     MeleeAttack,
-    EnemyWindow
+    EnemyWindow,
+    EnemyStunned
 }
 
 public interface AIState

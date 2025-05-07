@@ -36,6 +36,7 @@ public class GamePlayState : State
         base.Tick();
         if (_controller.ElapsedTime >= _enemySpawnTime)
         {
+            SpawnEnemy();
             _enemySpawnTime += _enemySpawnTimeIncrement;
         }
     }

@@ -6,12 +6,24 @@ public class PlayerController : MonoBehaviour
     private GameController _gameController;
     private GameHUDController _uiControls;
     private Health _health;
+    private bool _hasBarricade = false;
 
     [SerializeField]
     private LayerMask _interactLayers;
     [SerializeField]
+    private LayerMask _attackLayers;
+    [SerializeField]
+    private float _attackRadius = .95f;
+    [SerializeField]
     private float _interactRadius = 3f;
     private Collider[] colliders = new Collider[50];
+    [SerializeField]
+    private SpriteRenderer _sprite;
+
+    private Animator _animator;
+
+    [SerializeField]
+    private GameObject _hitbox;
     public GameController GameController
     {
         get => _gameController;
@@ -22,6 +34,12 @@ public class PlayerController : MonoBehaviour
     {
         get => _health;
         set => _health = value;
+    }
+
+    public bool HasBarricade
+    {
+        get => _hasBarricade;
+        set => _hasBarricade = value;
     }
 
     private CharacterController _characterController;
@@ -41,11 +59,21 @@ public class PlayerController : MonoBehaviour
 
         _uiControls.OnAttack += Attack;
         _uiControls.OnInteract += Interact;
+
+        _animator = gameObject.GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (_uiControls.JoystickInput.x < 0)
+        {
+            _sprite.flipX = true;
+        }
+        else if(_uiControls.JoystickInput.x > 0)
+        {
+            _sprite.flipX = false;
+        }
         Vector3 _move = new Vector3(_uiControls.JoystickInput.x, 0, -_uiControls.JoystickInput.y);
         _characterController.Move(_move * Time.deltaTime * _moveSpeed);
     }
@@ -58,15 +86,32 @@ public class PlayerController : MonoBehaviour
 
     private void Attack()
     {
-
+        //_animator.CrossFadeInFixedTime("VagrantAnim", 0.2f);
+        _animator.Play("VagrantAnim", 0, 0.01f);
+        Physics.OverlapSphereNonAlloc(_hitbox.transform.position, _attackRadius, colliders, _attackLayers, QueryTriggerInteraction.Collide);
+        foreach (Collider col in colliders)
+        {
+            if (col != null)
+            {
+                Debug.Log(col);                
+                col.gameObject.GetComponentInChildren<IDamageable>()?.Damage(this);   
+            }
+        }
+        //_animator.CrossFadeInFixedTime("VagrantIdle", 0.2f);
     }
 
     private void Interact()
     {
+        
         Physics.OverlapSphereNonAlloc(transform.position, _interactRadius, colliders, _interactLayers, QueryTriggerInteraction.Collide);
         foreach (Collider col in colliders)
         {
-            col.gameObject.GetComponent<IInteractable>().Interact();
+            if (col != null)
+            {
+                Debug.Log(col);
+                col.gameObject.GetComponentInChildren<IInteractable>()?.Interact(this);
+            }
+            
         }
     }
 }

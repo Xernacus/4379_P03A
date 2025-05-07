@@ -17,6 +17,7 @@ public class AIAgent : MonoBehaviour
         stateMachine.RegisterState(new AIEnemyEnterWindowState());
         stateMachine.RegisterState(new AIEnemyWanderState());
         stateMachine.RegisterState(new AIMeleeAttackState());
+        stateMachine.RegisterState(new AIStunnedState());
         stateMachine.ChangeState(initialState);
     }
 
