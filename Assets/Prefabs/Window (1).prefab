@@ -136,6 +136,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _barricadePrefab: {fileID: 8053249965094342741, guid: bc6fa0ba2864ece40857047377e13caf, type: 3}
   _barricadePoint: {fileID: 5763765623910577241}
+  _breakSfx: {fileID: 8300000, guid: 7fcbc06c35fec37498aebfbb47e0c25b, type: 3}
+  _damageSfx: {fileID: 8300000, guid: a68bbb78fb800bb4fb0ef391514bfb94, type: 3}
+  _barricadeSfx: {fileID: 8300000, guid: d4d8ebcc341b3414ba1a2715cf56482b, type: 3}
+  _hitVfx: {fileID: 4231637246545556988, guid: b16cf317cbd7dd147939cd4a696e4055, type: 3}
   VaultPoint: {fileID: 3766384744248276693}
   OutsidePoint: {fileID: 1667747906452448017}
 --- !u!65 &99875427077543160

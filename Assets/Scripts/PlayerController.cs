@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour
     private Animator _animator;
 
     [SerializeField]
+    private AudioClip _sfx;
+
+    [SerializeField]
     private GameObject _hitbox;
     public GameController GameController
     {
@@ -45,6 +48,11 @@ public class PlayerController : MonoBehaviour
     private CharacterController _characterController;
 
     private float _moveSpeed = .1f;
+
+    private void Awake()
+    {
+        _health = gameObject.GetComponent<Health>();
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -99,6 +107,10 @@ public class PlayerController : MonoBehaviour
                 Debug.Log(col);                
                 col.gameObject.GetComponentInChildren<IDamageable>()?.Damage(this);   
             }
+        }
+        if (_sfx != null)
+        {
+            AudioHelper.PlayClip2D(_sfx, .8f);
         }
         //_animator.CrossFadeInFixedTime("VagrantIdle", 0.2f);
     }

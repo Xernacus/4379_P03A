@@ -20,12 +20,13 @@ public class AIStunnedState : AIState
         _updateTimer = .5f;
         _enemy = agent.gameObject.GetComponent<Enemy>();
         _enemy.SetSpriteFlashing(true);
+        _enemy._stunned = true;
         //Debug.Log(_agent.destination) ;
     }
 
     public void Exit(AIAgent agent)
     {
-        
+        _enemy._stunned = false;
     }
     public AIStateID GetID()
     {

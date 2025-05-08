@@ -13,8 +13,15 @@ public class Enemy : MonoBehaviour, IDamageable
 
     [SerializeField]
     private SpriteRenderer _sprite;
+    [SerializeField]
+    private AudioClip _sfx;
 
     private Animator _animator;
+
+    [SerializeField]
+    private GameObject _attackVfx;
+
+    public bool _stunned = false;
 
     private void Start()
     {
@@ -23,6 +30,10 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private void OnTriggerEnter(Collider other)
     {
+        if (_stunned)
+        {
+            return;
+        }
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             other.gameObject.GetComponent<Health>().TakeDamage(1);
@@ -66,5 +77,10 @@ public class Enemy : MonoBehaviour, IDamageable
     public void PlayAttackAnim()
     {
         _animator.Play("DogAnim", 0, 0.1f);
+        if (_sfx != null)
+        {
+            AudioHelper.PlayClip2D(_sfx, 1.3f);
+        }
+        Instantiate(_attackVfx, gameObject.transform.position, Quaternion.identity);
     }
 }

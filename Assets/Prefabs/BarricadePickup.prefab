@@ -501,3 +501,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a10709dcdb3fc8147af385252b9c6b85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _sfx: {fileID: 8300000, guid: 821ee56c6af63464da373ede2410863c, type: 3}

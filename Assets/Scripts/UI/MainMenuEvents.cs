@@ -49,8 +49,8 @@ public class MainMenuEvents : MonoBehaviour
         _settingsBackButton = _document.rootVisualElement.Q("SettingsBackButton") as Button;
         _settingsBackButton.RegisterCallback<ClickEvent>(OnSettingsBackButtonClick);
 
-        _resetButton = _document.rootVisualElement.Q("StartGameButton") as Button;
-        _resetButton.RegisterCallback<ClickEvent>(OnPlayGameClick);
+        _resetButton = _document.rootVisualElement.Q("ResetButton") as Button;
+        _resetButton.RegisterCallback<ClickEvent>(OnResetClick);
 
         _menuButtons = _document.rootVisualElement.Query<Button>().ToList();
         for (int i = 0; i < _menuButtons.Count; i++)
@@ -92,6 +92,7 @@ public class MainMenuEvents : MonoBehaviour
     private void OnResetClick(ClickEvent evt)
     {
         SaveManager.Instance.ResetSave();
+        _label.text = "Enemies Killed: " + SaveManager.Instance.ActiveSaveData.Score.ToString();
     }
 
     private void OnAllButtonsClick(ClickEvent evt)

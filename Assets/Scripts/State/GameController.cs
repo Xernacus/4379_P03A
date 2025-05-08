@@ -24,6 +24,9 @@ public class GameController : MonoBehaviour
     [field: SerializeField]
     public GameFSM FSM { get; private set; }
 
+    [SerializeField]
+    private AudioClip _sfx;
+
     [SerializeField] private float _timeToWin = 300;
     public float ElapsedTime { get; private set; }
     public bool HasWon { get; private set; }
@@ -31,7 +34,8 @@ public class GameController : MonoBehaviour
     public event Action OnWin = delegate { };
     public event Action OnLose = delegate { };
 
-    private void Start()
+    
+private void Start()
     {
 
         ElapsedTime = 0;
@@ -66,5 +70,13 @@ public class GameController : MonoBehaviour
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex);
+    }
+
+    public void PlayMusic()
+    {
+        if (_sfx != null)
+        {
+            AudioHelper.PlayClip2D(_sfx, .4f);
+        }
     }
 }

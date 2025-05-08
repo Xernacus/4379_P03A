@@ -162,7 +162,7 @@ public class GameHUDController : MonoBehaviour
     private void SetHealthBarPercent(float currentEXP, float expForLevelUp)
     {
         float percentage = ((1 / expForLevelUp) * currentEXP) * 100;
-        _healthBarFill.style.height = Length.Percent(percentage);
+        _healthBarFill.style.width = Length.Percent(percentage);
     }
 
     private void Update()

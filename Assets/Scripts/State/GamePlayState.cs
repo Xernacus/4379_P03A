@@ -17,7 +17,7 @@ public class GamePlayState : State
     public override void Enter()
     {
         base.Enter();
-
+        _controller.PlayMusic();
         Debug.Log("State: Game Play");
     }
 

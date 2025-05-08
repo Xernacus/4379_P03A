@@ -197,9 +197,10 @@ MonoBehaviour:
   _attackLayers:
     serializedVersion: 2
     m_Bits: 256
-  _attackRadius: 3
+  _attackRadius: 4
   _interactRadius: 3
   _sprite: {fileID: 4227101190396603124}
+  _sfx: {fileID: 8300000, guid: 19de97497fdd6754aa895ac15ba8b840, type: 3}
   _hitbox: {fileID: 6560100096886491317}
 --- !u!143 &6072756673979415281
 CharacterController:
@@ -273,11 +274,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4037b76ed1a20864a86dc0fb3ee2f799, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sfx: {fileID: 0}
+  _sfx: {fileID: 8300000, guid: 0f7146fc3ab00b74fa18c463d1e4a828, type: 3}
   _deathsfx: {fileID: 0}
   _volumeSFX: 1
   _currentHealth: 5
   _maxHealth: 5
+  _isEnemy: 0
   OnKilled:
     m_PersistentCalls:
       m_Calls: []

@@ -149,11 +149,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4037b76ed1a20864a86dc0fb3ee2f799, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sfx: {fileID: 0}
+  _sfx: {fileID: 8300000, guid: 9d0033a65448ddb4481a230067def9c2, type: 3}
   _deathsfx: {fileID: 8300000, guid: 9557a0a7ca60a34448a492ade426fc0a, type: 3}
-  _volumeSFX: 1
+  _volumeSFX: 0.35
   _currentHealth: 6
   _maxHealth: 6
+  _isEnemy: 1
   OnKilled:
     m_PersistentCalls:
       m_Calls: []
@@ -219,6 +220,9 @@ MonoBehaviour:
   _agent: {fileID: 1504053507873879658}
   _navAgent: {fileID: 4401115190572999303}
   _sprite: {fileID: 5928692887699161343}
+  _sfx: {fileID: 8300000, guid: 735f6c8d4752de046b361ce8ea423888, type: 3}
+  _attackVfx: {fileID: 4231637246545556988, guid: 764a06e96665c4945a4c0e81b4f5f62d, type: 3}
+  _stunned: 0
 --- !u!1 &5839194411996609105
 GameObject:
   m_ObjectHideFlags: 0
